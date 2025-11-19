@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CSCNotes.Migrations
 {
     [DbContext(typeof(NotesDbContext))]
-    [Migration("20251119083836_CSCNote")]
+    [Migration("20251119102156_CSCNote")]
     partial class CSCNote
     {
         /// <inheritdoc />
@@ -47,6 +47,9 @@ namespace CSCNotes.Migrations
 
                     b.Property<DateTime?>("UpdateTime")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("_Importance")
+                        .HasColumnType("int");
 
                     b.HasKey("UID");
 

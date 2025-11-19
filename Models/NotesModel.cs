@@ -16,14 +16,14 @@ namespace CSCNotes.Models
 
         public DateTime? UpdateTime { get; set; }
 
-        // public enum Importance
-        // {
-        //     low = 1,
-        //     Med = 2,
-        //     High = 3
-        // }
+        public enum Importance
+        {
+            low = 1,
+            Med = 2,
+            High = 3
+        }
 
-        // public Importance _Importance { get; set; } = Importance.Med;
+        public Importance _Importance { get; set; }
 
     }
 }

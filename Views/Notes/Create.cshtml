@@ -1,30 +1,26 @@
 @model CSCNotes.Models.NotesModel
 
-@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
 <h2>Create Note</h2>
 
-<form asp-action="Create" method="post" class="mt-4">
+<form method="post">
 
     <div class="mb-3">
-        <label asp-for="Notes_Title" class="form-label fw-bold">Title</label>
-        <input asp-for="Notes_Title" class="form-control" placeholder="Enter note title..." />
-        <span asp-validation-for="Notes_Title" class="text-danger"></span>
+        <label class="form-label fw-bold">Title</label>
+        <input asp-for="Notes_Title" class="form-control" />
     </div>
 
     <div class="mb-3">
-        <label asp-for="Notes_Content" class="form-label fw-bold">Content</label>
-
-        <!-- Bigger Content Box -->
-        <textarea asp-for="Notes_Content" class="form-control" rows="10" style="min-height: 250px;"
-            placeholder="Write your content here..."></textarea>
-
-        <span asp-validation-for="Notes_Content" class="text-danger"></span>
+        <label class="form-label fw-bold">Content</label>
+        <textarea asp-for="Notes_Content" class="form-control" rows="6"></textarea>
     </div>
 
-    <button type="submit" class="btn btn-primary">Create</button>
-    <a asp-action="Index" class="btn btn-secondary ms-2">Cancel</a>
+    <div class="mb-3">
+        <label class="form-label fw-bold">Importance</label>
+        <select asp-for="_Importance" asp-items="Html.GetEnumSelectList<CSCNotes.Models.NotesModel.Importance>()"
+            class="form-select">
+        </select>
+    </div>
 
+    <button class="btn btn-primary mt-3">Create</button>
+    <a asp-action="Index" class="btn btn-secondary mt-3">Cancel</a>
 </form>

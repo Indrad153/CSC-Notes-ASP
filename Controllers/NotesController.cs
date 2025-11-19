@@ -26,7 +26,7 @@ namespace CSCNotes.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Notes_Title, Notes_Content")] NotesModel notesModel)
+        public async Task<IActionResult> Create([Bind("Notes_Title, Notes_Content , _Importance")] NotesModel notesModel)
         {
             if (ModelState.IsValid)
             {
@@ -46,7 +46,7 @@ namespace CSCNotes.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("UID, Notes_Title, Notes_Content, Notes_Create_Time")] NotesModel notesModel)
+        public async Task<IActionResult> Edit(int id, [Bind("UID, Notes_Title, Notes_Content, Notes_Create_Time , _Importance")] NotesModel notesModel)
         {
             if (id != notesModel.UID)
                 return BadRequest();

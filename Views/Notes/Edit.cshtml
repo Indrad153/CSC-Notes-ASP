@@ -1,23 +1,32 @@
 @model CSCNotes.Models.NotesModel
-@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewData["Notes_Title"] = "Note";
-}
 
 <h2>Edit Note</h2>
 
-<form method="post">
+<form method="post" class="mt-4">
     <input type="hidden" asp-for="UID" />
 
-    <div class="form-group">
-        <label>Title</label>
+    <!-- Title -->
+    <div class="mb-3">
+        <label asp-for="Notes_Title" class="form-label fw-bold">Title</label>
         <input asp-for="Notes_Title" class="form-control" />
     </div>
 
-    <div class="form-group mt-2">
-        <label>Content</label>
-        <textarea asp-for="Notes_Content" class="form-control"></textarea>
+    <!-- Content -->
+    <div class="mb-3">
+        <label asp-for="Notes_Content" class="form-label fw-bold">Content</label>
+        <textarea asp-for="Notes_Content" class="form-control" rows="10" style="min-height: 250px;"></textarea>
     </div>
 
-    <button class="btn btn-primary mt-3">Update</button>
+    <!-- Importance ENUM Dropdown -->
+    <div class="mb-3">
+        <label asp-for="_Importance" class="form-label fw-bold">Importance</label>
+        <select asp-for="_Importance" class="form-select">
+            <option value="@CSCNotes.Models.NotesModel.Importance.low">Low</option>
+            <option value="@CSCNotes.Models.NotesModel.Importance.Med">Medium</option>
+            <option value="@CSCNotes.Models.NotesModel.Importance.High">High</option>
+        </select>
+    </div>
+
+    <button class="btn btn-primary">Update</button>
+    <a asp-action="Index" class="btn btn-secondary ms-2">Cancel</a>
 </form>

@@ -45,6 +45,9 @@ namespace CSCNotes.Migrations
                     b.Property<DateTime?>("UpdateTime")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("_Importance")
+                        .HasColumnType("int");
+
                     b.HasKey("UID");
 
                     b.ToTable("notes_Models");

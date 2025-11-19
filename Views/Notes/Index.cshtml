@@ -1,9 +1,5 @@
 @model IEnumerable<CSCNotes.Models.NotesModel>
 
-@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
 <h2>Notes</h2>
 
 <div class="mb-3">
@@ -16,20 +12,51 @@
             <th>Title</th>
             <th>Preview</th>
             <th>Created</th>
+            <th>Importance</th>
             <th>Actions</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var note in Model)
         {
-            <tr>
+            // Choose a color based on importance value
+            string rowClass = note._Importance switch
+            {
+                NotesModel.Importance.low => "table-success", // Low = green
+                NotesModel.Importance.Med => "table-warning", // Medium = yellow
+                NotesModel.Importance.High => "table-danger", // High = red
+                _ => ""
+            };
+
+            string badgeClass = note._Importance switch
+            {
+                NotesModel.Importance.low => "bg-success",
+                NotesModel.Importance.Med => "bg-warning text-dark",
+                NotesModel.Importance.High => "bg-danger",
+                _ => "bg-secondary"
+            };
+
+            string importanceText = note._Importance switch
+            {
+                NotesModel.Importance.low => "Low",
+                NotesModel.Importance.Med => "Med",
+                NotesModel.Importance.High => "High",
+                _ => "Unknown"
+            };
+            <tr class="@rowClass">
                 <td>@note.Notes_Title</td>
+
                 <td>
                     @(note.Notes_Content.Length > 120
                                     ? note.Notes_Content.Substring(0, 120) + "..."
                                     : note.Notes_Content)
                 </td>
+
                 <td>@note.Notes_Create_Time.ToLocalTime().ToString("g")</td>
+
+                <td>
+                    <span class="badge @badgeClass">@importanceText</span>
+                </td>
 
                 <td>
                     <a asp-action="Edit" asp-route-id="@note.UID" class="btn btn-sm btn-outline-secondary">Edit</a>

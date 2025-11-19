@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CSCNotes")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d7a7571b2be2a3d5f169575da3472cd02b83ab5f")]
 [assembly: System.Reflection.AssemblyProductAttribute("CSCNotes")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CSCNotes")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

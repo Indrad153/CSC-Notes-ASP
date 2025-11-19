@@ -20,7 +20,8 @@ namespace CSCNotes.Migrations
                     Notes_Title = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     Notes_Content = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Notes_Create_Time = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdateTime = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    UpdateTime = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    _Importance = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
