@@ -1,0 +1,23 @@
+@model CSCNotes.Models.NotesModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Notes_Title"] = "Note";
+}
+
+<h2>Edit Note</h2>
+
+<form method="post">
+    <input type="hidden" asp-for="UID" />
+
+    <div class="form-group">
+        <label>Title</label>
+        <input asp-for="Notes_Title" class="form-control" />
+    </div>
+
+    <div class="form-group mt-2">
+        <label>Content</label>
+        <textarea asp-for="Notes_Content" class="form-control"></textarea>
+    </div>
+
+    <button class="btn btn-primary mt-3">Update</button>
+</form>

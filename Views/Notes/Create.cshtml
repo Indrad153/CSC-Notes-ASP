@@ -1,0 +1,30 @@
+@model CSCNotes.Models.NotesModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create Note</h2>
+
+<form asp-action="Create" method="post" class="mt-4">
+
+    <div class="mb-3">
+        <label asp-for="Notes_Title" class="form-label fw-bold">Title</label>
+        <input asp-for="Notes_Title" class="form-control" placeholder="Enter note title..." />
+        <span asp-validation-for="Notes_Title" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Notes_Content" class="form-label fw-bold">Content</label>
+
+        <!-- Bigger Content Box -->
+        <textarea asp-for="Notes_Content" class="form-control" rows="10" style="min-height: 250px;"
+            placeholder="Write your content here..."></textarea>
+
+        <span asp-validation-for="Notes_Content" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create</button>
+    <a asp-action="Index" class="btn btn-secondary ms-2">Cancel</a>
+
+</form>

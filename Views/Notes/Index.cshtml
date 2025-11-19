@@ -1,0 +1,41 @@
+@model IEnumerable<CSCNotes.Models.NotesModel>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Notes</h2>
+
+<div class="mb-3">
+    <a asp-action="Create" class="btn btn-primary">Create New Note</a>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Preview</th>
+            <th>Created</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var note in Model)
+        {
+            <tr>
+                <td>@note.Notes_Title</td>
+                <td>
+                    @(note.Notes_Content.Length > 120
+                                    ? note.Notes_Content.Substring(0, 120) + "..."
+                                    : note.Notes_Content)
+                </td>
+                <td>@note.Notes_Create_Time.ToLocalTime().ToString("g")</td>
+
+                <td>
+                    <a asp-action="Edit" asp-route-id="@note.UID" class="btn btn-sm btn-outline-secondary">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@note.UID" class="btn btn-sm btn-outline-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
